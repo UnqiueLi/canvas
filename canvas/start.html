@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>五角星</title>
+	<script>
+  		window.onload=function(){
+		  	   var canvas=document.getElementById("canvas");
+		       var context=canvas.getContext("2d");
+		       canvas.width=600;
+		       canvas.height=600;
+		       context.lineWidth=10;
+
+		       context.beginPath();
+		       for(var i=0;i<5;i++){
+		       	  var bigX=Math.cos((18+72*i)/180*Math.PI)*200+300;
+		       	  var bigY=-Math.sin((18+72*i)/180*Math.PI)*200+300;
+		       	  var smallX=Math.cos((54+72*i)/180*Math.PI)*100+300;
+		       	  var smallY=-Math.sin((54+72*i)/180*Math.PI)*100+300;
+		       	  context.lineTo(bigX,bigY);
+		       	  context.lineTo(smallX,smallY);
+		       }
+		       context.closePath();
+		       context.strokeStyle="#5252de";
+		       context.stroke();
+  		}
+	</script>
+</head>
+<style>
+	#canvas{
+		border: 1px solid #000;
+	}
+</style>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+</html>

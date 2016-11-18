@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>五角星</title>
+	<script src="start封装.js"></script>
+	<script>
+  		window.onload=function(){
+		  	   var canvas=document.getElementById("canvas");
+		       var context=canvas.getContext("2d");
+		       var width=document.documentElement.clientWidth || document.body.clientWidth;
+		       canvas.width=width;
+		       var height=document.documentElement.clientHeight  ||document.body.clientHeight;
+		       canvas.height=height;
+		     
+		 	   function drawStart(R,valX,valY,ratote,color){
+			       // context.strokeStyle=color;
+			       context.fillStyle=color;
+				   context.lineWidth=3;
+			       context.beginPath();
+			       for(var i=0;i<5;i++){
+			       	  var bigX=Math.cos((18+72*i-ratote)/180*Math.PI)*R+valX;
+			       	  var bigY=-Math.sin((18+72*i-ratote)/180*Math.PI)*R+valY;
+			       	  var smallX=Math.cos((54+72*i-ratote)/180*Math.PI)*R/2+valX;
+			       	  var smallY=-Math.sin((54+72*i-ratote)/180*Math.PI)*R/2+valY;
+			       	  context.lineTo(bigX,bigY);
+			       	  context.lineTo(smallX,smallY);
+			       }
+			       context.closePath();
+			       context.stroke();
+			       context.fill();
+		       }
+		       for(var j=0;j<=150;j++){
+		       	var size=Math.floor(Math.random()*10+7);
+		       	var valX=Math.floor(Math.random()*width);
+		       	var valY=Math.floor(Math.random()*height);
+		       	var ratote=Math.floor(Math.random()*360);
+                var rgba="rgba("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+",1)";
+		       	 drawStart(size,valX,valY,ratote,rgba);
+		       }
+		      
+  		}
+	</script>
+</head>
+<style>
+	#canvas{
+		border: 1px solid #000;
+		background: #000;
+	}
+</style>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+</html>

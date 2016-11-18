@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<script>
+ 		window.onload=function(){
+ 			var canvas=document.getElementById("canvas");
+
+ 			var context=canvas.getContext('2d');
+ 			canvas.width=800;
+ 			canvas.height=800;
+
+		    context.lineWidth=10;
+
+			context.beginPath();
+ 			context.moveTo(50,50);
+			context.lineTo(150,150);
+			context.lineTo(50,250);
+			context.strokeStyle="#50dd56";
+ 			context.stroke();
+
+			context.beginPath();
+			context.moveTo(150,50);
+			context.lineTo(250,150);
+			context.lineTo(150,250);
+			context.strokeStyle="#ccc";
+ 			context.stroke();
+
+			context.beginPath();
+			context.moveTo(250,50);
+			context.lineTo(350,150);
+			context.lineTo(250,250);
+ 			context.strokeStyle="#f00";
+ 			context.stroke();
+ 		}
+	</script>
+</head>
+<style>
+	#canvas{
+		border: 1px solid #333;
+	}
+</style>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+</html>
