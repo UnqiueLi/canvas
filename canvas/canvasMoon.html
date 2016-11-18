@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>五角星</title>
+	<script>
+  		window.onload=function(){
+		  	   var canvas=document.getElementById("canvas");
+		       var context=canvas.getContext("2d");
+		    
+		       canvas.width=600;
+		       canvas.height=600;
+		       context.lineWidth=10;
+		       context.strokeStyle="red";
+		       context.fillStyle="yellow";
+		       context.beginPath();
+		       context.arc(100,75,50,0.5*Math.PI,1.5*Math.PI,false);
+		       context.fill();
+		       context.closePath();
+			   context.stroke();
+
+		       context.beginPath();
+		       context.arc(145,80,65,1.5*Math.PI,0.5*Math.PI,true);
+		       context.closePath();
+		       context.stroke();
+
+
+  		}
+	</script>
+</head>
+<style>
+</style>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+</html>

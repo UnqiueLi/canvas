@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>五角星</title>
+	<script>
+  		window.onload=function(){
+		  	   var canvas=document.getElementById("canvas");
+		       var context=canvas.getContext("2d");
+		       var width=document.documentElement.clientWidth || document.body.clientWidth;
+		       canvas.width=width;
+		       var height=document.documentElement.clientHeight  ||document.body.clientHeight;
+		       canvas.height=height;
+		     
+		       creatStart(context);
+		 	   var timer=setInterval(function(){
+		 	   		creatStart(context);
+		        },1000);
+
+
+					
+
+		 	     function creatStart(context){
+
+		 	     	  context.clearRect(0,0,width,height);
+		 	     	  var linear=context.createLinearGradient(0,0,0,height);
+				       linear.addColorStop(0,"#050065");
+				       linear.addColorStop(1,"#0addd6");
+				       context.fillStyle=linear;
+
+				       context.fillRect(0,0,width,height);
+
+
+			     	 for(var j=0;j<=150;j++){
+				       	var size=Math.floor(Math.random()*10+3);
+				       	var valX=Math.floor(Math.random()*width);
+				       	var valY=Math.floor(Math.random()*height);
+				       	var ratote=Math.floor(Math.random()*360);
+		  				   drawStart(size,valX,valY,ratote,getRandomNumsixColor());
+				       }	
+
+				    /*
+		 	     	  画月亮
+		 	     	*/
+		 	 //     	context.beginPath();
+				 //    context.arc(250,250,150,0.5*Math.PI,1.9*Math.PI,false);
+				 //    context.arc(250,260,200,1.7*Math.PI,0.482*Math.PI,true);
+				 //    context.closePath();
+					// context.stroke();
+
+				   context.beginPath();
+         		   context.arc(800,200,150,1.63*Math.PI,0.39*Math.PI);
+          		   context.arc(650,200,250,0.186*Math.PI,1.82*Math.PI,true);
+                   context.closePath();
+                   context.fillStyle=getRandomNumsixColor();
+                   context.fill();
+
+
+
+		    	 }
+		      	function drawStart(R,valX,valY,ratote,color){
+			       context.fillStyle=color;
+				   context.lineWidth=3;
+			       context.beginPath();
+			       for(var i=0;i<5;i++){
+			       	  var bigX=Math.cos((18+72*i-ratote)/180*Math.PI)*R+valX;
+			       	  var bigY=-Math.sin((18+72*i-ratote)/180*Math.PI)*R+valY;
+			       	  var smallX=Math.cos((54+72*i-ratote)/180*Math.PI)*R/2+valX;
+			       	  var smallY=-Math.sin((54+72*i-ratote)/180*Math.PI)*R/2+valY;
+			       	  context.lineTo(bigX,bigY);
+			       	  context.lineTo(smallX,smallY);
+			       }
+			       context.closePath();
+			       context.fill();
+		       }
+		       function getRandomNumsixColor(){
+				var numList = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+				var result = "#";
+				for(var i = 0; i < 6; i++){
+					var randomNum = Math.round(Math.random()*15);
+					result += numList[randomNum];	
+				}
+				return result;
+			}
+  		}
+	</script>
+</head>
+<style>
+</style>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+</html>

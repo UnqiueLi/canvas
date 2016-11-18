@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>五角星</title>
+	<script>
+  		window.onload=function(){
+		  	   var canvas=document.getElementById("canvas");
+		       var context=canvas.getContext("2d");
+		       var width=document.documentElement.clientWidth || document.body.clientWidth;
+		       var height=document.documentElement.clientHeight  ||document.body.clientHeight;
+		       canvas.width=width;
+		       canvas.height=height;
+
+		     
+		       creatStart(context);
+		 	   var timer=setInterval(function(){
+		 	   		creatStart(context);
+		        },1000);
+
+		 	     function creatStart(context){
+		 	     	context.clearRect(0,0,width,height);
+		 	     	  var linear=context.createLinearGradient(0,0,0,height);
+				       linear.addColorStop(0.2,"#050065");
+				       linear.addColorStop(0.4,"#0addd6");
+				       linear.addColorStop(0.6,"#7570ed");
+				       context.fillStyle=linear;
+				       context.fillRect(0,0,width,height);
+		     
+			     	 for(var j=0;j<=120;j++){
+				       	var size=Math.floor(Math.random()*10+3);
+				       	var valX=Math.floor(Math.random()*width);
+				       	var valY=Math.floor(Math.random()*600);
+				       	var ratote=Math.floor(Math.random()*360);
+		  				   drawStart(size,valX,valY,ratote);
+				       }	 	
+		    	 }
+		      	function drawStart(R,valX,valY,ratote){
+			       context.fillStyle="#ebed2c";
+				   context.lineWidth=3;
+			       context.beginPath();
+			       for(var i=0;i<5;i++){
+			       	  var bigX=Math.cos((18+72*i-ratote)/180*Math.PI)*R+valX;
+			       	  var bigY=-Math.sin((18+72*i-ratote)/180*Math.PI)*R+valY;
+			       	  var smallX=Math.cos((54+72*i-ratote)/180*Math.PI)*R/2+valX;
+			       	  var smallY=-Math.sin((54+72*i-ratote)/180*Math.PI)*R/2+valY;
+			       	  context.lineTo(bigX,bigY);
+			       	  context.lineTo(smallX,smallY);
+			       }
+			       context.closePath();
+			       context.fill();
+		       }
+  		}
+	</script>
+</head>
+<style>
+	*{
+		margin: 0;padding: 0;
+	}
+</style>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+</html>
