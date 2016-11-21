@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>酷炫的canvas倒计时</title>
+	<script src="digit.js"></script>
+	<script>
+		window.onload = function(){
+			var window_width = 1024;
+			var window_height = 568;
+
+			var obj = document.getElementById('canvas');
+			obj.width = window_width;
+			obj.height = window_height;
+			var context = obj.getContext("2d");
+			var r = 8;
+
+			// context.arc(8,8,8,0,2*Math.PI);
+			context.fillStyle = "#33B5E5";
+
+			for(var i = 0; i < digit[0].length;i++){
+				for(var j =0; j < digit[0][i].length;j++){
+					if(digit[0][i][j] == 1){
+						context.beginPath();
+						context.arc(j*2*(r+1)+(r+1),i*2*(r+1)+(r+1),r,0,2*Math.PI)
+						context.fill();
+						context.closePath();
+					}
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="canvas" style="border:1px solid #e3e3e3;"></canvas>
+</body>
+</html>
